@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.contrib.auth.models import User
 
 from rest_framework import permissions
@@ -6,10 +7,13 @@ from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import renderers
 from rest_framework import viewsets
+from rest_framework_swagger.views import get_swagger_view
 
 from snippets.models import Snippet
 from snippets.permissions import IsOwnerOrReadOnly
 from snippets.serializers import SnippetSerializer, UserSerializer
+
+schema_view = get_swagger_view(title='Pastebin API')
 
 
 @api_view(['GET'])
